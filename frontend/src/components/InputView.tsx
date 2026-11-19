@@ -95,6 +95,7 @@ function OfferCard({ draft, onChange, onRemove }: { draft: OfferDraft; onChange:
   const fileRef = useRef<HTMLInputElement>(null);
   const [drag, setDrag] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
+  const [showFix, setShowFix] = useState(false);
   const tabs = [
     { key: "file", label: "Upload", icon: <Upload className="h-4 w-4" /> },
     { key: "text", label: "Paste text", icon: <ClipboardPaste className="h-4 w-4" /> },
@@ -165,7 +166,27 @@ function OfferCard({ draft, onChange, onRemove }: { draft: OfferDraft; onChange:
             </label>
           </div>
         )}
-        <button className="mt-3 text-xs font-semibold text-arroyo hover:underline" onClick={() => setShowReviews(!showReviews)}>
+        {draft.source !== "form" && (
+          <>
+            <button className="mt-3 block text-xs font-semibold text-arroyo hover:underline" onClick={() => setShowFix(!showFix)} aria-expanded={showFix}>
+              {showFix ? "Hide" : "Optional: add or correct details (city, job title, salary…)"}
+            </button>
+            {showFix && (
+              <div className="mt-2 rounded-xl bg-gray-50 p-3">
+                <p className="mb-2 text-xs text-gray-600">Anything you type here is used instead of what we read from the letter. Leave blank to use the letter.</p>
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  <TextField label="Job title" v={draft.form.job_title} on={(v) => setForm("job_title", v, false)} span />
+                  <TextField label="Company" v={draft.form.company} on={(v) => setForm("company", v, false)} span />
+                  <TextField label="Office city" v={draft.form.office_city} on={(v) => setForm("office_city", v, false)} />
+                  <TextField label="State (2 letters)" v={draft.form.office_state} on={(v) => setForm("office_state", v.toUpperCase().slice(0, 2), false)} />
+                  <NumField label="Base salary ($/yr)" v={draft.form.base_salary} on={(v) => setForm("base_salary", v)} />
+                  <NumField label="Signing bonus ($)" v={draft.form.signing_bonus} on={(v) => setForm("signing_bonus", v)} />
+                </div>
+              </div>
+            )}
+          </>
+        )}
+        <button className="mt-3 block text-xs font-semibold text-arroyo hover:underline" onClick={() => setShowReviews(!showReviews)}>
           {showReviews ? "Hide" : "Optional: paste employee reviews for this company"}
         </button>
         {showReviews && (

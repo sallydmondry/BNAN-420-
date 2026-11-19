@@ -22,7 +22,8 @@ export async function startCompare(profile: Profile, offers: OfferDraft[], sampl
         offers: offers.map((o) => ({
           offer_id: o.offer_id, label: o.label, source: o.source,
           text: o.source === "text" ? o.text : undefined,
-          form: o.source === "form" ? cleanForm(o.form) : undefined,
+          // For uploads/pastes, the form carries optional user corrections ("Add or correct details").
+          form: o.source === "form" || Object.keys(cleanForm(o.form)).length ? cleanForm(o.form) : undefined,
           pasted_reviews: o.reviews.trim() || undefined,
         })),
       };

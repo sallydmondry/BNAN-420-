@@ -60,7 +60,8 @@ you **$182 short** each month.
 ## Features
 
 - **Upload anything:** PDF offer letters, scanned images or phone photos (read with offline OCR), Word files, pasted
-  emails, or a manual form. Compare 2 or 3 offers at once.
+  emails, or a manual form. Compare 2 or 3 offers at once. If a letter is unclear, type a correction (city, title,
+  salary…) under "Add or correct details" and it is used instead.
 - **Six specialized agents and an orchestrator:** typed inputs and outputs, four agents running in parallel, and live
   progress streamed to the browser.
 - **Real public data:** IRS 2026 tax rules, Tax Foundation state brackets, Zillow and Census rents, BLS spending and
@@ -185,7 +186,7 @@ All public data is downloaded **once** by `backend/data/download_data.py` and co
 ## Evaluation vs. ground truth
 
 ```bash
-.venv/bin/python -m pytest backend/tests -q            # 54 tests
+.venv/bin/python -m pytest backend/tests -q            # 102 tests
 .venv/bin/python -m backend.tests.run_pipeline_eval     # full pipeline on all 6 sample comparisons
 ```
 
@@ -194,6 +195,7 @@ All public data is downloaded **once** by `backend/data/download_data.py` and co
 | Field extraction on 13 sample letters (5 PDF, 1 scanned image, 7 text) | **195 / 195 fields correct** |
 | Take-home pay vs. an independent hand-typed tax worksheet (`backend/tests/ground_truth_worksheet.py`) | **Exact to the cent on all 13 offers**, including NYC and Pittsburgh city taxes |
 | Letter styles not in the samples (hourly, monthly, remote, "no bonus", reimbursements) | Pass |
+| 22 real-world ways letters state the job title and city ("Job Title:", "work location will be…", "join our team as…", all-caps, casual emails), each as text **and** as a PDF | **44 / 44** |
 | Unreadable file, non-offer document, or a forced agent failure | Clearly flagged partial result, no crash |
 | Privacy: letter text not echoed back; no salaries, names or letter text in logs | Pass |
 
@@ -319,7 +321,7 @@ Dockerfile · render.yaml · run.sh · Start TrueOffer.command
 | 2. Agents | The six agents, the deterministic finance/scoring engine, the local rules extractor and offline OCR |
 | 3. Orchestrator & API | Three-stage pipeline with timeouts and degraded mode, in-memory run store, SSE progress, stateless what-if endpoint |
 | 4. Frontend | Upload/paste/form input, live agent progress, results dashboard, what-ifs, details with sources, negotiation email |
-| 5. QA | 54 automated tests, ground-truth evaluation (195/195 fields, exact take-home), privacy and failure tests, desktop and mobile checks |
+| 5. QA | 102 automated tests, ground-truth evaluation (195/195 fields, exact take-home), privacy and failure tests, desktop and mobile checks |
 | 6. Deployment | Dockerfile, Render blueprint, one-click local launcher |
 | 7. Docs | This README, architecture page, demo guide |
 
