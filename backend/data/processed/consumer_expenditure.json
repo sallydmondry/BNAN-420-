@@ -1,0 +1,28 @@
+{
+ "year": 2025,
+ "annual": {
+  "food_home": 3385.0,
+  "food_away": 2308.0,
+  "transportation": 7098.0,
+  "entertainment": 2248.0,
+  "apparel": 969.0,
+  "personal_care": 571.0,
+  "utilities_1p": 3170.0,
+  "utilities_2p": 5123.0,
+  "utilities_3p": 5804.0,
+  "utilities_4p": 6262.0
+ },
+ "series": {
+  "food_home": "CXUFOODHOMELB0502M",
+  "food_away": "CXUFOODAWAYLB0502M",
+  "transportation": "CXUTRANSLB0502M",
+  "entertainment": "CXUENTRTAINLB0502M",
+  "apparel": "CXUAPPARELLB0502M",
+  "personal_care": "CXUPERSCARELB0502M",
+  "utilities_1p": "CXUUTILSLB0502M",
+  "utilities_2p": "CXUUTILSLB0504M",
+  "utilities_3p": "CXUUTILSLB0505M",
+  "utilities_4p": "CXUUTILSLB0506M"
+ },
+ "note": "Consumer Expenditure Survey, annual mean expenditure; LB0502 = one-person consumer units, LB0504/5/6 = two/three/four-person consumer units."
+}

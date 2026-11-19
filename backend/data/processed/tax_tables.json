@@ -1,0 +1,1586 @@
+{
+ "federal": {
+  "tax_year": 2026,
+  "filing_status": "single",
+  "standard_deduction": 16100.0,
+  "brackets": [
+   {
+    "over": 0.0,
+    "rate": 0.1
+   },
+   {
+    "over": 12400.0,
+    "rate": 0.12
+   },
+   {
+    "over": 50400.0,
+    "rate": 0.22
+   },
+   {
+    "over": 105700.0,
+    "rate": 0.24
+   },
+   {
+    "over": 201775.0,
+    "rate": 0.32
+   },
+   {
+    "over": 256225.0,
+    "rate": 0.35
+   },
+   {
+    "over": 640600.0,
+    "rate": 0.37
+   }
+  ],
+  "fica": {
+   "ss_rate": 0.062,
+   "ss_wage_base": 184500.0,
+   "medicare_rate": 0.0145,
+   "addl_medicare_rate": 0.009,
+   "addl_medicare_threshold": 200000.0
+  },
+  "k401_elective_limit": 24500.0,
+  "sources": [
+   {
+    "name": "IRS Rev. Proc. 2025-32, Sec. 4.01 Table 3 and Sec. 4.15",
+    "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+    "data_year": "TY2026"
+   },
+   {
+    "name": "IRS Publication 15 (2026), Social security and Medicare tax",
+    "url": "https://www.irs.gov/pub/irs-pdf/p15.pdf",
+    "data_year": "2026"
+   },
+   {
+    "name": "IRS Notice 2025-67 (2026 401(k) elective deferral limit $24,500)",
+    "url": "https://www.irs.gov/pub/irs-drop/n-25-67.pdf",
+    "data_year": "2026"
+   }
+  ]
+ },
+ "state": {
+  "tax_year": 2026,
+  "states": {
+   "AL": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.02
+     },
+     {
+      "over": 500.0,
+      "rate": 0.04
+     },
+     {
+      "over": 3000.0,
+      "rate": 0.05
+     }
+    ],
+    "std_deduction": 3000.0,
+    "exemption": 1500.0,
+    "credit": 0.0,
+    "std_raw": "3000",
+    "exemption_raw": "1500",
+    "no_wage_tax": false,
+    "rules": {
+     "std_phaseout": {
+      "base": 3000,
+      "floor": 2500,
+      "start": 25499,
+      "per": 500,
+      "step": 25
+     },
+     "note": "TF footnote (c)"
+    }
+   },
+   "AK": {
+    "brackets": [],
+    "std_deduction": 0.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": true,
+    "rules": {}
+   },
+   "AZ": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.025
+     }
+    ],
+    "std_deduction": 8350.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "8350",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "AR": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.02
+     },
+     {
+      "over": 4600.0,
+      "rate": 0.039
+     }
+    ],
+    "std_deduction": 2470.0,
+    "exemption": 0.0,
+    "credit": 29.0,
+    "std_raw": "2470",
+    "exemption_raw": "$29 credit",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "CA": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.01
+     },
+     {
+      "over": 11079.0,
+      "rate": 0.02
+     },
+     {
+      "over": 26264.0,
+      "rate": 0.04
+     },
+     {
+      "over": 41452.0,
+      "rate": 0.06
+     },
+     {
+      "over": 57542.0,
+      "rate": 0.08
+     },
+     {
+      "over": 72724.0,
+      "rate": 0.093
+     },
+     {
+      "over": 371479.0,
+      "rate": 0.103
+     },
+     {
+      "over": 445771.0,
+      "rate": 0.113
+     },
+     {
+      "over": 742953.0,
+      "rate": 0.123
+     },
+     {
+      "over": 1000000.0,
+      "rate": 0.133
+     }
+    ],
+    "std_deduction": 5540.0,
+    "exemption": 0.0,
+    "credit": 153.0,
+    "std_raw": "5540",
+    "exemption_raw": "$153 credit",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "CO": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.044
+     }
+    ],
+    "std_deduction": 16100.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "16100",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "CT": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.02
+     },
+     {
+      "over": 10000.0,
+      "rate": 0.045
+     },
+     {
+      "over": 50000.0,
+      "rate": 0.055
+     },
+     {
+      "over": 100000.0,
+      "rate": 0.06
+     },
+     {
+      "over": 200000.0,
+      "rate": 0.065
+     },
+     {
+      "over": 250000.0,
+      "rate": 0.069
+     },
+     {
+      "over": 500000.0,
+      "rate": 0.0699
+     }
+    ],
+    "std_deduction": 0.0,
+    "exemption": 15000.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "15000",
+    "no_wage_tax": false,
+    "rules": {
+     "exemption_phaseout": {
+      "start": 30000,
+      "per": 1000,
+      "step": 1000
+     },
+     "two_pct_recapture": {
+      "start": 56500,
+      "per": 5000,
+      "step": 1000
+     },
+     "note": "TF footnotes (p), (r); personal tax credits (q) not modeled"
+    }
+   },
+   "DE": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0
+     },
+     {
+      "over": 2000.0,
+      "rate": 0.022
+     },
+     {
+      "over": 5000.0,
+      "rate": 0.039
+     },
+     {
+      "over": 10000.0,
+      "rate": 0.048
+     },
+     {
+      "over": 20000.0,
+      "rate": 0.052
+     },
+     {
+      "over": 25000.0,
+      "rate": 0.0555
+     },
+     {
+      "over": 60000.0,
+      "rate": 0.066
+     }
+    ],
+    "std_deduction": 3250.0,
+    "exemption": 0.0,
+    "credit": 110.0,
+    "std_raw": "3250",
+    "exemption_raw": "$110 credit",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "FL": {
+    "brackets": [],
+    "std_deduction": 0.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": true,
+    "rules": {}
+   },
+   "GA": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0519
+     }
+    ],
+    "std_deduction": 12000.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "12000",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "HI": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.014
+     },
+     {
+      "over": 9600.0,
+      "rate": 0.032
+     },
+     {
+      "over": 14400.0,
+      "rate": 0.055
+     },
+     {
+      "over": 19200.0,
+      "rate": 0.064
+     },
+     {
+      "over": 24000.0,
+      "rate": 0.068
+     },
+     {
+      "over": 36000.0,
+      "rate": 0.072
+     },
+     {
+      "over": 48000.0,
+      "rate": 0.076
+     },
+     {
+      "over": 125000.0,
+      "rate": 0.079
+     },
+     {
+      "over": 175000.0,
+      "rate": 0.0825
+     },
+     {
+      "over": 225000.0,
+      "rate": 0.09
+     },
+     {
+      "over": 275000.0,
+      "rate": 0.1
+     },
+     {
+      "over": 325000.0,
+      "rate": 0.11
+     }
+    ],
+    "std_deduction": 4400.0,
+    "exemption": 1144.0,
+    "credit": 0.0,
+    "std_raw": "4400",
+    "exemption_raw": "1144",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "ID": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0
+     },
+     {
+      "over": 4811.0,
+      "rate": 0.053
+     }
+    ],
+    "std_deduction": 16100.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "16100",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "IL": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0495
+     }
+    ],
+    "std_deduction": 0.0,
+    "exemption": 2925.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "2925",
+    "no_wage_tax": false,
+    "rules": {
+     "exemption_cutoff": 250000,
+     "note": "TF footnote (v)"
+    }
+   },
+   "IN": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0295
+     }
+    ],
+    "std_deduction": 0.0,
+    "exemption": 1000.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "1000",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "IA": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.038
+     }
+    ],
+    "std_deduction": 16100.0,
+    "exemption": 0.0,
+    "credit": 40.0,
+    "std_raw": "16100",
+    "exemption_raw": "$40 credit",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "KS": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.052
+     },
+     {
+      "over": 23000.0,
+      "rate": 0.0558
+     }
+    ],
+    "std_deduction": 3605.0,
+    "exemption": 9160.0,
+    "credit": 0.0,
+    "std_raw": "3605",
+    "exemption_raw": "9160",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "KY": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.035
+     }
+    ],
+    "std_deduction": 3360.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "3360",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "LA": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.03
+     }
+    ],
+    "std_deduction": 12875.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "12875",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "ME": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.058
+     },
+     {
+      "over": 27399.0,
+      "rate": 0.0675
+     },
+     {
+      "over": 64849.0,
+      "rate": 0.0715
+     }
+    ],
+    "std_deduction": 8350.0,
+    "exemption": 5300.0,
+    "credit": 0.0,
+    "std_raw": "8350",
+    "exemption_raw": "5300",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "MD": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.02
+     },
+     {
+      "over": 1000.0,
+      "rate": 0.03
+     },
+     {
+      "over": 2000.0,
+      "rate": 0.04
+     },
+     {
+      "over": 3000.0,
+      "rate": 0.0475
+     },
+     {
+      "over": 100000.0,
+      "rate": 0.05
+     },
+     {
+      "over": 125000.0,
+      "rate": 0.0525
+     },
+     {
+      "over": 150000.0,
+      "rate": 0.055
+     },
+     {
+      "over": 250000.0,
+      "rate": 0.0575
+     },
+     {
+      "over": 500000.0,
+      "rate": 0.0625
+     },
+     {
+      "over": 1000000.0,
+      "rate": 0.065
+     }
+    ],
+    "std_deduction": 3350.0,
+    "exemption": 3200.0,
+    "credit": 0.0,
+    "std_raw": "3350",
+    "exemption_raw": "3200",
+    "no_wage_tax": false,
+    "rules": {
+     "exemption_phaseout_linear": {
+      "start": 100000,
+      "end": 150000
+     },
+     "note": "TF footnote (aa)"
+    }
+   },
+   "MA": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.05
+     },
+     {
+      "over": 1083150.0,
+      "rate": 0.09
+     }
+    ],
+    "std_deduction": 0.0,
+    "exemption": 4400.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "4400",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "MI": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0425
+     }
+    ],
+    "std_deduction": 0.0,
+    "exemption": 5900.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "5900",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "MN": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0535
+     },
+     {
+      "over": 33310.0,
+      "rate": 0.068
+     },
+     {
+      "over": 109430.0,
+      "rate": 0.0785
+     },
+     {
+      "over": 203150.0,
+      "rate": 0.0985
+     }
+    ],
+    "std_deduction": 15300.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "15300",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "MS": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0
+     },
+     {
+      "over": 10000.0,
+      "rate": 0.04
+     }
+    ],
+    "std_deduction": 2300.0,
+    "exemption": 6000.0,
+    "credit": 0.0,
+    "std_raw": "2300",
+    "exemption_raw": "6000",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "MO": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0
+     },
+     {
+      "over": 1348.0,
+      "rate": 0.02
+     },
+     {
+      "over": 2696.0,
+      "rate": 0.025
+     },
+     {
+      "over": 4044.0,
+      "rate": 0.03
+     },
+     {
+      "over": 5392.0,
+      "rate": 0.035
+     },
+     {
+      "over": 6740.0,
+      "rate": 0.04
+     },
+     {
+      "over": 8088.0,
+      "rate": 0.045
+     },
+     {
+      "over": 9436.0,
+      "rate": 0.047
+     }
+    ],
+    "std_deduction": 16100.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "16100",
+    "exemption_raw": "n.a",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "MT": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.047
+     },
+     {
+      "over": 47500.0,
+      "rate": 0.0565
+     }
+    ],
+    "std_deduction": 16100.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "16100",
+    "exemption_raw": "n.a",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "NE": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0246
+     },
+     {
+      "over": 4130.0,
+      "rate": 0.0351
+     },
+     {
+      "over": 24760.0,
+      "rate": 0.0455
+     }
+    ],
+    "std_deduction": 8850.0,
+    "exemption": 0.0,
+    "credit": 176.0,
+    "std_raw": "8850",
+    "exemption_raw": "$176 credit",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "NV": {
+    "brackets": [],
+    "std_deduction": 0.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": true,
+    "rules": {}
+   },
+   "NH": {
+    "brackets": [],
+    "std_deduction": 0.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "n.a",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": true,
+    "rules": {}
+   },
+   "NJ": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.014
+     },
+     {
+      "over": 20000.0,
+      "rate": 0.0175
+     },
+     {
+      "over": 35000.0,
+      "rate": 0.035
+     },
+     {
+      "over": 40000.0,
+      "rate": 0.05525
+     },
+     {
+      "over": 75000.0,
+      "rate": 0.0637
+     },
+     {
+      "over": 500000.0,
+      "rate": 0.0897
+     },
+     {
+      "over": 1000000.0,
+      "rate": 0.1075
+     }
+    ],
+    "std_deduction": 0.0,
+    "exemption": 1000.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "1000",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "NM": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.015
+     },
+     {
+      "over": 5500.0,
+      "rate": 0.032
+     },
+     {
+      "over": 16500.0,
+      "rate": 0.043
+     },
+     {
+      "over": 33500.0,
+      "rate": 0.047
+     },
+     {
+      "over": 66500.0,
+      "rate": 0.049
+     },
+     {
+      "over": 210000.0,
+      "rate": 0.059
+     }
+    ],
+    "std_deduction": 16100.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "16100",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "NY": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.039
+     },
+     {
+      "over": 8500.0,
+      "rate": 0.044
+     },
+     {
+      "over": 11700.0,
+      "rate": 0.0515
+     },
+     {
+      "over": 13900.0,
+      "rate": 0.054
+     },
+     {
+      "over": 80650.0,
+      "rate": 0.059
+     },
+     {
+      "over": 215400.0,
+      "rate": 0.0685
+     },
+     {
+      "over": 1077550.0,
+      "rate": 0.0965
+     },
+     {
+      "over": 5000000.0,
+      "rate": 0.103
+     },
+     {
+      "over": 25000000.0,
+      "rate": 0.109
+     }
+    ],
+    "std_deduction": 8000.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "8000",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "NC": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0399
+     }
+    ],
+    "std_deduction": 12750.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "12750",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "ND": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0
+     },
+     {
+      "over": 48475.0,
+      "rate": 0.0195
+     },
+     {
+      "over": 244825.0,
+      "rate": 0.025
+     }
+    ],
+    "std_deduction": 16100.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "16100",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "OH": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0
+     },
+     {
+      "over": 26050.0,
+      "rate": 0.0275
+     }
+    ],
+    "std_deduction": 0.0,
+    "exemption": 2400.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "2400",
+    "no_wage_tax": false,
+    "rules": {
+     "exemption_tiers": [
+      [
+       40000,
+       2400
+      ],
+      [
+       80000,
+       2150
+      ],
+      [
+       500000,
+       1900
+      ],
+      [
+       1000000000000.0,
+       0
+      ]
+     ],
+     "note": "TF footnote (dd)"
+    }
+   },
+   "OK": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0
+     },
+     {
+      "over": 3750.0,
+      "rate": 0.025
+     },
+     {
+      "over": 4900.0,
+      "rate": 0.035
+     },
+     {
+      "over": 7200.0,
+      "rate": 0.045
+     }
+    ],
+    "std_deduction": 6350.0,
+    "exemption": 1000.0,
+    "credit": 0.0,
+    "std_raw": "6350",
+    "exemption_raw": "1000",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "OR": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0475
+     },
+     {
+      "over": 4550.0,
+      "rate": 0.0675
+     },
+     {
+      "over": 11400.0,
+      "rate": 0.0875
+     },
+     {
+      "over": 125000.0,
+      "rate": 0.099
+     }
+    ],
+    "std_deduction": 2910.0,
+    "exemption": 0.0,
+    "credit": 256.0,
+    "std_raw": "2910",
+    "exemption_raw": "$256 credit",
+    "no_wage_tax": false,
+    "rules": {
+     "credit_cutoff": 100000,
+     "note": "TF footnote (ee); federal-tax subtraction (b) not modeled"
+    }
+   },
+   "PA": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0307
+     }
+    ],
+    "std_deduction": 0.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {
+     "taxes_401k": true,
+     "note": "Pennsylvania does not exclude employee 401(k) deferrals from compensation"
+    }
+   },
+   "RI": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0375
+     },
+     {
+      "over": 82050.0,
+      "rate": 0.0475
+     },
+     {
+      "over": 186450.0,
+      "rate": 0.0599
+     }
+    ],
+    "std_deduction": 11200.0,
+    "exemption": 5250.0,
+    "credit": 0.0,
+    "std_raw": "11200",
+    "exemption_raw": "5250",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "SC": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0
+     },
+     {
+      "over": 3640.0,
+      "rate": 0.03
+     },
+     {
+      "over": 18230.0,
+      "rate": 0.06
+     }
+    ],
+    "std_deduction": 8350.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "8350",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "SD": {
+    "brackets": [],
+    "std_deduction": 0.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": true,
+    "rules": {}
+   },
+   "TN": {
+    "brackets": [],
+    "std_deduction": 0.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": true,
+    "rules": {}
+   },
+   "TX": {
+    "brackets": [],
+    "std_deduction": 0.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": true,
+    "rules": {}
+   },
+   "UT": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.045
+     }
+    ],
+    "std_deduction": 0.0,
+    "exemption": 0.0,
+    "credit": 966.0,
+    "std_raw": "$966 credit",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {
+     "credit_phaseout": {
+      "start": 18213,
+      "rate": 0.013
+     },
+     "note": "TF footnote (gg) (2025 threshold)"
+    }
+   },
+   "VT": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0335
+     },
+     {
+      "over": 49400.0,
+      "rate": 0.066
+     },
+     {
+      "over": 119700.0,
+      "rate": 0.076
+     },
+     {
+      "over": 249700.0,
+      "rate": 0.0875
+     }
+    ],
+    "std_deduction": 7650.0,
+    "exemption": 5300.0,
+    "credit": 0.0,
+    "std_raw": "7650",
+    "exemption_raw": "5300",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "VA": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.02
+     },
+     {
+      "over": 3000.0,
+      "rate": 0.03
+     },
+     {
+      "over": 5000.0,
+      "rate": 0.05
+     },
+     {
+      "over": 17000.0,
+      "rate": 0.0575
+     }
+    ],
+    "std_deduction": 8750.0,
+    "exemption": 930.0,
+    "credit": 0.0,
+    "std_raw": "8750",
+    "exemption_raw": "930",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "WA": {
+    "brackets": [],
+    "std_deduction": 0.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": null,
+    "exemption_raw": null,
+    "no_wage_tax": true,
+    "rules": {}
+   },
+   "WV": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.0222
+     },
+     {
+      "over": 10000.0,
+      "rate": 0.0296
+     },
+     {
+      "over": 25000.0,
+      "rate": 0.0333
+     },
+     {
+      "over": 40000.0,
+      "rate": 0.0444
+     },
+     {
+      "over": 60000.0,
+      "rate": 0.0482
+     }
+    ],
+    "std_deduction": 0.0,
+    "exemption": 2000.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "2000",
+    "no_wage_tax": false,
+    "rules": {}
+   },
+   "WI": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.035
+     },
+     {
+      "over": 15110.0,
+      "rate": 0.044
+     },
+     {
+      "over": 51950.0,
+      "rate": 0.053
+     },
+     {
+      "over": 332720.0,
+      "rate": 0.0765
+     }
+    ],
+    "std_deduction": 13960.0,
+    "exemption": 700.0,
+    "credit": 0.0,
+    "std_raw": "13960",
+    "exemption_raw": "700",
+    "no_wage_tax": false,
+    "rules": {
+     "std_phaseout_linear": {
+      "start": 20119,
+      "end": 136453
+     },
+     "note": "TF footnote (ii)"
+    }
+   },
+   "WY": {
+    "brackets": [],
+    "std_deduction": 0.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "n.a.",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": true,
+    "rules": {}
+   },
+   "DC": {
+    "brackets": [
+     {
+      "over": 0.0,
+      "rate": 0.04
+     },
+     {
+      "over": 10000.0,
+      "rate": 0.06
+     },
+     {
+      "over": 40000.0,
+      "rate": 0.065
+     },
+     {
+      "over": 60000.0,
+      "rate": 0.085
+     },
+     {
+      "over": 250000.0,
+      "rate": 0.0925
+     },
+     {
+      "over": 500000.0,
+      "rate": 0.0975
+     },
+     {
+      "over": 1000000.0,
+      "rate": 0.1075
+     }
+    ],
+    "std_deduction": 16100.0,
+    "exemption": 0.0,
+    "credit": 0.0,
+    "std_raw": "16100",
+    "exemption_raw": "n.a.",
+    "no_wage_tax": false,
+    "rules": {}
+   }
+  },
+  "source": {
+   "name": "Tax Foundation, State Individual Income Tax Rates and Brackets, 2026 (single filer columns)",
+   "url": "https://taxfoundation.org/wp-content/uploads/2026/02/2026-State-Individual-Income-Tax-Rates-Brackets.xlsx",
+   "data_year": "TY2026"
+  }
+ },
+ "local": {
+  "tax_year": 2026,
+  "localities": [
+   {
+    "state": "NY",
+    "cities": [
+     "New York",
+     "New York City",
+     "NYC",
+     "Manhattan",
+     "Brooklyn",
+     "Bronx",
+     "Queens",
+     "Staten Island",
+     "Long Island City"
+    ],
+    "name": "New York City resident income tax",
+    "base": "state_taxable",
+    "brackets": [
+     {
+      "over": 0,
+      "rate": 0.03078
+     },
+     {
+      "over": 12000,
+      "rate": 0.03762
+     },
+     {
+      "over": 25000,
+      "rate": 0.03819
+     },
+     {
+      "over": 50000,
+      "rate": 0.03876
+     }
+    ],
+    "url": "https://www.tax.ny.gov/pdf/2025/inc/it201i_2025.pdf",
+    "verified": "parsed from official NYS DTF IT-201-I (p.40); NYC rates unchanged for 2026",
+    "auto_verified": true
+   },
+   {
+    "state": "PA",
+    "cities": [
+     "Philadelphia"
+    ],
+    "name": "Philadelphia Wage Tax (resident)",
+    "base": "gross_wages",
+    "rate": 0.037375,
+    "url": "https://www.phila.gov/services/payments-assistance-taxes/business-taxes/wage-tax-employers/",
+    "verified": "phila.gov: 3.74% Jul 2025-Jun 2026, 3.735% from Jul 1 2026 -> 2026 blended 3.7375%"
+   },
+   {
+    "state": "PA",
+    "cities": [
+     "Pittsburgh"
+    ],
+    "name": "Pittsburgh Earned Income Tax (1% city + 2% school) + $52 LST",
+    "base": "gross_wages",
+    "rate": 0.03,
+    "head_tax": 52,
+    "url": "https://www.pittsburghpa.gov/City-Government/Finances/Taxes",
+    "verified": "pittsburghpa.gov tax page: resident 3% total; LST $52"
+   },
+   {
+    "state": "OH",
+    "cities": [
+     "Columbus"
+    ],
+    "name": "Columbus municipal income tax",
+    "base": "gross_wages",
+    "rate": 0.025,
+    "url": "https://www.columbus.gov/Government/City-Auditor/Income-Tax-Division/General-Income-Tax-Information",
+    "verified": "columbus.gov: 2.5%"
+   },
+   {
+    "state": "OH",
+    "cities": [
+     "Cleveland"
+    ],
+    "name": "Cleveland municipal income tax",
+    "base": "gross_wages",
+    "rate": 0.025,
+    "url": "https://www.ccatax.ci.cleveland.oh.us/",
+    "verified": "secondary sources (Central Collection Agency administers): 2.5%"
+   },
+   {
+    "state": "OH",
+    "cities": [
+     "Cincinnati"
+    ],
+    "name": "Cincinnati municipal income tax",
+    "base": "gross_wages",
+    "rate": 0.018,
+    "url": "https://www.cincinnati-oh.gov/finance/income-taxes/",
+    "verified": "cincinnati-oh.gov fetched: 1.8% effective 10/02/20"
+   },
+   {
+    "state": "MI",
+    "cities": [
+     "Detroit"
+    ],
+    "name": "Detroit city income tax (resident)",
+    "base": "state_taxable",
+    "rate": 0.024,
+    "url": "https://detroitmi.gov/departments/office-chief-financial-officer/ocfo-divisions/office-treasury/income-tax",
+    "verified": "MCL 141.503 statutory 2.4% resident cap; city levies at cap"
+   },
+   {
+    "state": "MI",
+    "cities": [
+     "Grand Rapids"
+    ],
+    "name": "Grand Rapids city income tax (resident)",
+    "base": "state_taxable",
+    "rate": 0.015,
+    "url": "https://www.grandrapidsmi.gov/Government/Departments/Income-Tax",
+    "verified": "1.5% resident (city forms + secondary)"
+   },
+   {
+    "state": "KY",
+    "cities": [
+     "Louisville"
+    ],
+    "name": "Louisville Metro occupational license tax (resident)",
+    "base": "gross_wages",
+    "rate": 0.022,
+    "url": "https://louisvilleky.gov/government/revenue-commission",
+    "verified": "UofL 2025 payroll form + 2026 guides: 2.20% resident"
+   },
+   {
+    "state": "MO",
+    "cities": [
+     "Kansas City"
+    ],
+    "name": "Kansas City earnings tax",
+    "base": "gross_wages",
+    "rate": 0.01,
+    "url": "https://www.kcmo.gov/city-hall/departments/finance/earnings-tax",
+    "verified": "1% (Show-Me Institute, secondary)"
+   },
+   {
+    "state": "MO",
+    "cities": [
+     "St. Louis",
+     "Saint Louis"
+    ],
+    "name": "St. Louis City earnings tax",
+    "base": "gross_wages",
+    "rate": 0.01,
+    "url": "https://www.stlouis-mo.gov/government/departments/collector-revenue/earnings-tax/",
+    "verified": "1% (Show-Me Institute, secondary)"
+   },
+   {
+    "state": "IN",
+    "cities": [
+     "Indianapolis"
+    ],
+    "name": "Marion County local income tax",
+    "base": "state_taxable",
+    "rate": 0.0202,
+    "url": "https://www.in.gov/dor/",
+    "verified": "DOR Departmental Notice #1 (2026) via secondary sources: 2.02%"
+   },
+   {
+    "state": "MD",
+    "cities": [
+     "Baltimore"
+    ],
+    "name": "Baltimore City local income tax",
+    "base": "state_taxable",
+    "rate": 0.032,
+    "url": "https://dls.maryland.gov/pubs/prod/NoPblTabPDF/2026CountyLocalTaxRates.pdf",
+    "verified": "Maryland DLS 2026 county local tax rates: 3.20%"
+   },
+   {
+    "state": "AL",
+    "cities": [
+     "Birmingham"
+    ],
+    "name": "Birmingham occupational tax",
+    "base": "gross_wages",
+    "rate": 0.01,
+    "url": "https://www.birminghamal.gov/",
+    "verified": "1% on gross wages (League of Municipalities survey, secondary)"
+   },
+   {
+    "state": "OR",
+    "cities": [
+     "Portland"
+    ],
+    "name": "Metro SHS (1% > $128k) + Multnomah PFA (1.5% > $125k, 3% > $250k)",
+    "base": "state_taxable",
+    "brackets_sum": [
+     {
+      "name": "Metro SHS",
+      "brackets": [
+       {
+        "over": 0,
+        "rate": 0.0
+       },
+       {
+        "over": 128000,
+        "rate": 0.01
+       }
+      ]
+     },
+     {
+      "name": "Multnomah PFA",
+      "brackets": [
+       {
+        "over": 0,
+        "rate": 0.0
+       },
+       {
+        "over": 125000,
+        "rate": 0.015
+       },
+       {
+        "over": 250000,
+        "rate": 0.03
+       }
+      ]
+     }
+    ],
+    "url": "https://www.portland.gov/revenue/personal-tax",
+    "verified": "portland.gov SHS 2026 single threshold $128,000; PFA tiers from county (verify)"
+   },
+   {
+    "state": "CO",
+    "cities": [
+     "Denver"
+    ],
+    "name": "Denver Occupational Privilege Tax (employee)",
+    "base": "head_tax",
+    "head_tax": 69,
+    "url": "https://denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Department-of-Finance/Our-Divisions/Treasury/Business-Tax-Information/Business-Tax-FAQ",
+    "verified": "Denver Business Tax FAQ: $5.75/month employee"
+   },
+   {
+    "state": "CO",
+    "cities": [
+     "Aurora"
+    ],
+    "name": "Aurora Occupational Privilege Tax (employee)",
+    "base": "head_tax",
+    "head_tax": 24,
+    "url": "https://www.auroragov.org/",
+    "verified": "$2/month employee (secondary)"
+   },
+   {
+    "state": "DE",
+    "cities": [
+     "Wilmington"
+    ],
+    "name": "Wilmington earned income tax",
+    "base": "gross_wages",
+    "rate": 0.0125,
+    "url": "https://www.wilmingtonde.gov/",
+    "verified": "1.25% (secondary)"
+   }
+  ],
+  "assumption": "You live in the office city (resident rates). Commuter/nonresident rates are not modeled."
+ },
+ "health_premium_default": {
+  "monthly": 120.0,
+  "annual": 1440.0,
+  "source": "KFF 2025 Employer Health Benefits Survey: average worker contribution, single coverage",
+  "url": "https://www.kff.org/health-costs/report/2025-employer-health-benefits-survey/",
+  "data_year": "2025"
+ }
+}

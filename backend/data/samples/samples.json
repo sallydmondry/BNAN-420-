@@ -1,0 +1,177 @@
+{
+ "simulated": true,
+ "disclaimer": "SIMULATED SAMPLE - fictional company, for demonstration only.",
+ "samples": [
+  {
+   "id": "consulting-phx-den",
+   "title": "Consulting: Phoenix vs. Denver",
+   "description": "Business Analyst in Phoenix vs. Associate Consultant in Denver",
+   "simulated": true,
+   "offers": [
+    {
+     "offer_id": "A",
+     "key": "s1_A",
+     "file": "s1_A_meridian.txt",
+     "format": "txt",
+     "label": "Offer A"
+    },
+    {
+     "offer_id": "B",
+     "key": "s1_B",
+     "file": "s1_B_halcyon.pdf",
+     "format": "pdf",
+     "label": "Offer B"
+    }
+   ],
+   "profile": {
+    "student_loan_monthly": 350,
+    "housing": "alone",
+    "home_city": "Tucson, AZ"
+   }
+  },
+  {
+   "id": "tech-aus-sf",
+   "title": "Tech analyst: Austin vs. San Francisco",
+   "description": "A $27K higher SF salary vs. no state income tax in Austin",
+   "simulated": true,
+   "offers": [
+    {
+     "offer_id": "A",
+     "key": "s2_A",
+     "file": "s2_A_bluegate.pdf",
+     "format": "pdf",
+     "label": "Offer A"
+    },
+    {
+     "offer_id": "B",
+     "key": "s2_B",
+     "file": "s2_B_quillfeather.txt",
+     "format": "txt",
+     "label": "Offer B"
+    }
+   ],
+   "profile": {
+    "student_loan_monthly": 300,
+    "housing": "roommates",
+    "roommates": 1,
+    "home_city": "Dallas, TX"
+   }
+  },
+  {
+   "id": "finance-nyc-clt",
+   "title": "Finance: New York vs. Charlotte",
+   "description": "NYC pays $8K more. Is it actually worth more?",
+   "simulated": true,
+   "offers": [
+    {
+     "offer_id": "A",
+     "key": "s3_A",
+     "file": "s3_A_granite-harbor.txt",
+     "format": "txt",
+     "label": "Offer A"
+    },
+    {
+     "offer_id": "B",
+     "key": "s3_B",
+     "file": "s3_B_piedmont-ridge.png",
+     "format": "png",
+     "label": "Offer B"
+    }
+   ],
+   "profile": {
+    "student_loan_monthly": 400,
+    "housing": "alone",
+    "home_city": "Richmond, VA"
+   }
+  },
+  {
+   "id": "accounting-chi-dal",
+   "title": "Accounting: Chicago vs. Dallas",
+   "description": "Big-firm audit in Chicago vs. tax in Dallas",
+   "simulated": true,
+   "offers": [
+    {
+     "offer_id": "A",
+     "key": "s4_A",
+     "file": "s4_A_lakeshore-whitby.pdf",
+     "format": "pdf",
+     "label": "Offer A"
+    },
+    {
+     "offer_id": "B",
+     "key": "s4_B",
+     "file": "s4_B_trinity-ledger.txt",
+     "format": "txt",
+     "label": "Offer B"
+    }
+   ],
+   "profile": {
+    "student_loan_monthly": 250,
+    "housing": "roommates",
+    "roommates": 1,
+    "home_city": "Milwaukee, WI"
+   }
+  },
+  {
+   "id": "marketing-sea-bna",
+   "title": "Marketing: Seattle vs. Nashville",
+   "description": "Higher Seattle pay vs. lower Nashville costs",
+   "simulated": true,
+   "offers": [
+    {
+     "offer_id": "A",
+     "key": "s5_A",
+     "file": "s5_A_cascade-brightline.txt",
+     "format": "txt",
+     "label": "Offer A"
+    },
+    {
+     "offer_id": "B",
+     "key": "s5_B",
+     "file": "s5_B_cumberland-creative.pdf",
+     "format": "pdf",
+     "label": "Offer B"
+    }
+   ],
+   "profile": {
+    "student_loan_monthly": 200,
+    "housing": "alone",
+    "home_city": "Portland, OR"
+   }
+  },
+  {
+   "id": "data-3way",
+   "title": "Data analyst: Tucson vs. Pittsburgh vs. Raleigh",
+   "description": "Three offers, three tax systems (incl. a city tax)",
+   "simulated": true,
+   "offers": [
+    {
+     "offer_id": "A",
+     "key": "s6_A",
+     "file": "s6_A_saguaro.txt",
+     "format": "txt",
+     "label": "Offer A"
+    },
+    {
+     "offer_id": "B",
+     "key": "s6_B",
+     "file": "s6_B_allegheny.pdf",
+     "format": "pdf",
+     "label": "Offer B"
+    },
+    {
+     "offer_id": "C",
+     "key": "s6_C",
+     "file": "s6_C_oak-city.txt",
+     "format": "txt",
+     "label": "Offer C"
+    }
+   ],
+   "profile": {
+    "student_loan_monthly": 300,
+    "housing": "alone",
+    "home_city": "Phoenix, AZ"
+   }
+  }
+ ]
+}

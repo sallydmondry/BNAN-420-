@@ -1,0 +1,73 @@
+{
+ "built": "2026-11-19",
+ "tables": {
+  "places": {
+   "rows": 32113,
+   "source": "U.S. Census Bureau 2024 Gazetteer (places)",
+   "url": "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_Gaz_place_national.zip",
+   "data_year": "2024",
+   "real": true
+  },
+  "metros": {
+   "rows": 52,
+   "source": "Census Bureau Vintage 2024 CBSA population estimates + 2024 Gazetteer",
+   "url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2024/metro/totals/cbsa-est2024-alldata.csv",
+   "data_year": "2024",
+   "real": true
+  },
+  "rpp": {
+   "rows": 52,
+   "source": "BEA Regional Price Parities by MSA (MARPP)",
+   "url": "https://apps.bea.gov/regional/zip/MARPP.zip",
+   "data_year": "2024",
+   "real": true
+  },
+  "metro_stats": {
+   "rows": 52,
+   "source": "Census ACS 2024 1-year (B01001, B08013, B08303, B25031, B25064) + Zillow ZORI",
+   "url": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/1YRData/",
+   "data_year": "ACS 2024; ZORI 2026-10",
+   "real": true,
+   "zori_url": "https://files.zillowstatic.com/research/public_csvs/zori/Metro_zori_uc_sfrcondomfr_sm_month.csv"
+  },
+  "climate": {
+   "rows": 52,
+   "source": "NOAA NCEI U.S. Climate Normals 1991-2020 (annual/seasonal)",
+   "url": "https://www.ncei.noaa.gov/data/normals-annualseasonal/1991-2020/access/",
+   "data_year": "1991-2020",
+   "real": true
+  },
+  "parks": {
+   "rows": 62,
+   "source": "List of U.S. national parks (Wikipedia, citing NPS)",
+   "url": "https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States",
+   "data_year": "2025",
+   "real": true
+  },
+  "outdoors": {
+   "rows": 52,
+   "source": "Derived: national parks within 150/300 mi of principal city",
+   "url": "https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States",
+   "data_year": "2025",
+   "real": true
+  },
+  "tax_tables": {
+   "source": "IRS Rev. Proc. 2025-32; IRS Pub 15 (2026); Tax Foundation 2026; curated local taxes",
+   "data_year": "TY2026",
+   "real": true
+  },
+  "consumer_expenditure": {
+   "source": "BLS Consumer Expenditure Survey via BLS Public API v1",
+   "url": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+   "data_year": "2025",
+   "real": true
+  },
+  "oews": {
+   "rows": 33304,
+   "source": "BLS Occupational Employment and Wage Statistics (metro + national)",
+   "url": "https://www.bls.gov/oes/tables.htm",
+   "data_year": "May 2025",
+   "real": true
+  }
+ }
+}

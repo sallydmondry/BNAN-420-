@@ -1,0 +1,597 @@
+{
+ "simulated": true,
+ "disclaimer": "SIMULATED SAMPLE - fictional company, for demonstration only.",
+ "assumptions": {
+  "contribution_401k_pct": 6,
+  "health_premium_annual": 1440,
+  "filing_status": "single",
+  "tax_year": 2026,
+  "method": "independent worksheet (backend/tests/ground_truth_worksheet.py) with constants typed from primary sources"
+ },
+ "offers": {
+  "s1_A": {
+   "sample_id": "consulting-phx-den",
+   "file": "s1_A_meridian.txt",
+   "format": "txt",
+   "fields": {
+    "company": "Meridian Strategy Partners",
+    "job_title": "Business Analyst",
+    "office_city": "Phoenix",
+    "office_state": "AZ",
+    "base_salary": 72000,
+    "signing_bonus": 5000,
+    "bonus_target_pct": 10,
+    "match_401k": {
+     "tiers": [
+      {
+       "rate": 1.0,
+       "on_pct": 4
+      }
+     ],
+     "nonelective_pct": 0.0
+    },
+    "hsa_employer_annual": 500,
+    "pto_days": 15,
+    "pto_unlimited": false,
+    "relocation": 3000,
+    "equity_value_usd": null,
+    "start_date": "2026-07-13",
+    "work_arrangement": "hybrid"
+   },
+   "take_home": {
+    "gross": 72000,
+    "pretax_401k": 4320.0,
+    "pretax_health": 1440.0,
+    "federal_taxable": 50140.0,
+    "federal_tax": 5768.8,
+    "social_security": 4374.72,
+    "medicare": 1023.12,
+    "state_taxable": 57890.0,
+    "state_tax": 1447.25,
+    "local_tax": 0.0,
+    "total_tax": 12613.89,
+    "take_home_annual": 53626.11,
+    "take_home_monthly": 4468.84
+   }
+  },
+  "s1_B": {
+   "sample_id": "consulting-phx-den",
+   "file": "s1_B_halcyon.pdf",
+   "format": "pdf",
+   "fields": {
+    "company": "Halcyon Advisory Group",
+    "job_title": "Associate Consultant",
+    "office_city": "Denver",
+    "office_state": "CO",
+    "base_salary": 78000,
+    "signing_bonus": 8000,
+    "bonus_target_pct": 8,
+    "match_401k": {
+     "tiers": [
+      {
+       "rate": 0.5,
+       "on_pct": 6
+      }
+     ],
+     "nonelective_pct": 0.0
+    },
+    "hsa_employer_annual": null,
+    "pto_days": 20,
+    "pto_unlimited": false,
+    "relocation": null,
+    "equity_value_usd": null,
+    "start_date": "2026-08-03",
+    "work_arrangement": "onsite"
+   },
+   "take_home": {
+    "gross": 78000,
+    "pretax_401k": 4680.0,
+    "pretax_health": 1440.0,
+    "federal_taxable": 55780.0,
+    "federal_tax": 6983.6,
+    "social_security": 4746.72,
+    "medicare": 1110.12,
+    "state_taxable": 55780.0,
+    "state_tax": 2454.32,
+    "local_tax": 69.0,
+    "total_tax": 15363.76,
+    "take_home_annual": 56516.24,
+    "take_home_monthly": 4709.69
+   }
+  },
+  "s2_A": {
+   "sample_id": "tech-aus-sf",
+   "file": "s2_A_bluegate.pdf",
+   "format": "pdf",
+   "fields": {
+    "company": "Bluegate Software",
+    "job_title": "Data Analyst",
+    "office_city": "Austin",
+    "office_state": "TX",
+    "base_salary": 85000,
+    "signing_bonus": 5000,
+    "bonus_target_pct": 5,
+    "match_401k": {
+     "tiers": [
+      {
+       "rate": 1.0,
+       "on_pct": 5
+      }
+     ],
+     "nonelective_pct": 0.0
+    },
+    "hsa_employer_annual": null,
+    "pto_days": 18,
+    "pto_unlimited": false,
+    "relocation": null,
+    "equity_value_usd": 12000,
+    "start_date": "2026-06-08",
+    "work_arrangement": "hybrid"
+   },
+   "take_home": {
+    "gross": 85000,
+    "pretax_401k": 5100.0,
+    "pretax_health": 1440.0,
+    "federal_taxable": 62360.0,
+    "federal_tax": 8431.2,
+    "social_security": 5180.72,
+    "medicare": 1211.62,
+    "state_taxable": 0.0,
+    "state_tax": 0.0,
+    "local_tax": 0.0,
+    "total_tax": 14823.54,
+    "take_home_annual": 63636.46,
+    "take_home_monthly": 5303.04
+   }
+  },
+  "s2_B": {
+   "sample_id": "tech-aus-sf",
+   "file": "s2_B_quillfeather.txt",
+   "format": "txt",
+   "fields": {
+    "company": "Quillfeather Analytics",
+    "job_title": "Product Analyst",
+    "office_city": "San Francisco",
+    "office_state": "CA",
+    "base_salary": 112000,
+    "signing_bonus": 15000,
+    "bonus_target_pct": null,
+    "match_401k": {
+     "tiers": [
+      {
+       "rate": 1.0,
+       "on_pct": 3
+      },
+      {
+       "rate": 0.5,
+       "on_pct": 2
+      }
+     ],
+     "nonelective_pct": 0.0
+    },
+    "hsa_employer_annual": null,
+    "pto_days": null,
+    "pto_unlimited": true,
+    "relocation": 7500,
+    "equity_value_usd": 40000,
+    "start_date": "2026-06-22",
+    "work_arrangement": "hybrid"
+   },
+   "take_home": {
+    "gross": 112000,
+    "pretax_401k": 6720.0,
+    "pretax_health": 1440.0,
+    "federal_taxable": 87740.0,
+    "federal_tax": 14014.8,
+    "social_security": 6854.72,
+    "medicare": 1603.12,
+    "state_taxable": 98300.0,
+    "state_tax": 5427.54,
+    "local_tax": 0.0,
+    "total_tax": 27900.18,
+    "take_home_annual": 75939.82,
+    "take_home_monthly": 6328.32
+   }
+  },
+  "s3_A": {
+   "sample_id": "finance-nyc-clt",
+   "file": "s3_A_granite-harbor.txt",
+   "format": "txt",
+   "fields": {
+    "company": "Granite Harbor Capital",
+    "job_title": "Financial Analyst",
+    "office_city": "New York",
+    "office_state": "NY",
+    "base_salary": 95000,
+    "signing_bonus": 10000,
+    "bonus_target_pct": 15,
+    "match_401k": {
+     "tiers": [
+      {
+       "rate": 0.5,
+       "on_pct": 6
+      }
+     ],
+     "nonelective_pct": 0.0
+    },
+    "hsa_employer_annual": null,
+    "pto_days": 15,
+    "pto_unlimited": false,
+    "relocation": null,
+    "equity_value_usd": null,
+    "start_date": "2026-07-06",
+    "work_arrangement": "onsite"
+   },
+   "take_home": {
+    "gross": 95000,
+    "pretax_401k": 5700.0,
+    "pretax_health": 1440.0,
+    "federal_taxable": 71760.0,
+    "federal_tax": 10499.2,
+    "social_security": 5800.72,
+    "medicare": 1356.62,
+    "state_taxable": 79860.0,
+    "state_tax": 4147.44,
+    "local_tax": 2970.54,
+    "total_tax": 24774.52,
+    "take_home_annual": 63085.48,
+    "take_home_monthly": 5257.12
+   }
+  },
+  "s3_B": {
+   "sample_id": "finance-nyc-clt",
+   "file": "s3_B_piedmont-ridge.png",
+   "format": "png",
+   "fields": {
+    "company": "Piedmont Ridge Bank",
+    "job_title": "Corporate Banking Analyst",
+    "office_city": "Charlotte",
+    "office_state": "NC",
+    "base_salary": 87000,
+    "signing_bonus": 7500,
+    "bonus_target_pct": 12,
+    "match_401k": {
+     "tiers": [
+      {
+       "rate": 1.0,
+       "on_pct": 6
+      }
+     ],
+     "nonelective_pct": 0.0
+    },
+    "hsa_employer_annual": 1000,
+    "pto_days": 20,
+    "pto_unlimited": false,
+    "relocation": 5000,
+    "equity_value_usd": null,
+    "start_date": "2026-07-20",
+    "work_arrangement": "hybrid"
+   },
+   "take_home": {
+    "gross": 87000,
+    "pretax_401k": 5220.0,
+    "pretax_health": 1440.0,
+    "federal_taxable": 64240.0,
+    "federal_tax": 8844.8,
+    "social_security": 5304.72,
+    "medicare": 1240.62,
+    "state_taxable": 67590.0,
+    "state_tax": 2696.84,
+    "local_tax": 0.0,
+    "total_tax": 18086.98,
+    "take_home_annual": 62253.02,
+    "take_home_monthly": 5187.75
+   }
+  },
+  "s4_A": {
+   "sample_id": "accounting-chi-dal",
+   "file": "s4_A_lakeshore-whitby.pdf",
+   "format": "pdf",
+   "fields": {
+    "company": "Lakeshore & Whitby LLP",
+    "job_title": "Audit Associate",
+    "office_city": "Chicago",
+    "office_state": "IL",
+    "base_salary": 70000,
+    "signing_bonus": 3000,
+    "bonus_target_pct": null,
+    "match_401k": {
+     "tiers": [],
+     "nonelective_pct": 3
+    },
+    "hsa_employer_annual": null,
+    "pto_days": 18,
+    "pto_unlimited": false,
+    "relocation": null,
+    "equity_value_usd": null,
+    "start_date": "2026-09-08",
+    "work_arrangement": "onsite"
+   },
+   "take_home": {
+    "gross": 70000,
+    "pretax_401k": 4200.0,
+    "pretax_health": 1440.0,
+    "federal_taxable": 48260.0,
+    "federal_tax": 5543.2,
+    "social_security": 4250.72,
+    "medicare": 994.12,
+    "state_taxable": 61435.0,
+    "state_tax": 3041.03,
+    "local_tax": 0.0,
+    "total_tax": 13829.07,
+    "take_home_annual": 50530.93,
+    "take_home_monthly": 4210.91
+   }
+  },
+  "s4_B": {
+   "sample_id": "accounting-chi-dal",
+   "file": "s4_B_trinity-ledger.txt",
+   "format": "txt",
+   "fields": {
+    "company": "Trinity Ledger Partners",
+    "job_title": "Staff Accountant - Tax",
+    "office_city": "Dallas",
+    "office_state": "TX",
+    "base_salary": 66500,
+    "signing_bonus": 2500,
+    "bonus_target_pct": 5,
+    "match_401k": {
+     "tiers": [
+      {
+       "rate": 1.0,
+       "on_pct": 4
+      }
+     ],
+     "nonelective_pct": 0.0
+    },
+    "hsa_employer_annual": 600,
+    "pto_days": 15,
+    "pto_unlimited": false,
+    "relocation": null,
+    "equity_value_usd": null,
+    "start_date": "2026-09-14",
+    "work_arrangement": "hybrid"
+   },
+   "take_home": {
+    "gross": 66500,
+    "pretax_401k": 3990.0,
+    "pretax_health": 1440.0,
+    "federal_taxable": 44970.0,
+    "federal_tax": 5148.4,
+    "social_security": 4033.72,
+    "medicare": 943.37,
+    "state_taxable": 0.0,
+    "state_tax": 0.0,
+    "local_tax": 0.0,
+    "total_tax": 10125.49,
+    "take_home_annual": 50944.51,
+    "take_home_monthly": 4245.38
+   }
+  },
+  "s5_A": {
+   "sample_id": "marketing-sea-bna",
+   "file": "s5_A_cascade-brightline.txt",
+   "format": "txt",
+   "fields": {
+    "company": "Cascade Brightline",
+    "job_title": "Associate Marketing Manager",
+    "office_city": "Seattle",
+    "office_state": "WA",
+    "base_salary": 68000,
+    "signing_bonus": null,
+    "bonus_target_pct": null,
+    "match_401k": {
+     "tiers": [
+      {
+       "rate": 0.5,
+       "on_pct": 8
+      }
+     ],
+     "nonelective_pct": 0.0
+    },
+    "hsa_employer_annual": null,
+    "pto_days": null,
+    "pto_unlimited": true,
+    "relocation": null,
+    "equity_value_usd": null,
+    "start_date": "2026-08-17",
+    "work_arrangement": "hybrid"
+   },
+   "take_home": {
+    "gross": 68000,
+    "pretax_401k": 4080.0,
+    "pretax_health": 1440.0,
+    "federal_taxable": 46380.0,
+    "federal_tax": 5317.6,
+    "social_security": 4126.72,
+    "medicare": 965.12,
+    "state_taxable": 0.0,
+    "state_tax": 0.0,
+    "local_tax": 0.0,
+    "total_tax": 10409.44,
+    "take_home_annual": 52070.56,
+    "take_home_monthly": 4339.21
+   }
+  },
+  "s5_B": {
+   "sample_id": "marketing-sea-bna",
+   "file": "s5_B_cumberland-creative.pdf",
+   "format": "pdf",
+   "fields": {
+    "company": "Cumberland Creative Co.",
+    "job_title": "Marketing Specialist",
+    "office_city": "Nashville",
+    "office_state": "TN",
+    "base_salary": 58000,
+    "signing_bonus": 2000,
+    "bonus_target_pct": 5,
+    "match_401k": {
+     "tiers": [
+      {
+       "rate": 1.0,
+       "on_pct": 3
+      }
+     ],
+     "nonelective_pct": 0.0
+    },
+    "hsa_employer_annual": null,
+    "pto_days": 15,
+    "pto_unlimited": false,
+    "relocation": 2500,
+    "equity_value_usd": null,
+    "start_date": "2026-08-10",
+    "work_arrangement": "onsite"
+   },
+   "take_home": {
+    "gross": 58000,
+    "pretax_401k": 3480.0,
+    "pretax_health": 1440.0,
+    "federal_taxable": 36980.0,
+    "federal_tax": 4189.6,
+    "social_security": 3506.72,
+    "medicare": 820.12,
+    "state_taxable": 0.0,
+    "state_tax": 0.0,
+    "local_tax": 0.0,
+    "total_tax": 8516.44,
+    "take_home_annual": 44563.56,
+    "take_home_monthly": 3713.63
+   }
+  },
+  "s6_A": {
+   "sample_id": "data-3way",
+   "file": "s6_A_saguaro.txt",
+   "format": "txt",
+   "fields": {
+    "company": "Saguaro Data Works",
+    "job_title": "Junior Data Analyst",
+    "office_city": "Tucson",
+    "office_state": "AZ",
+    "base_salary": 62000,
+    "signing_bonus": null,
+    "bonus_target_pct": null,
+    "match_401k": {
+     "tiers": [
+      {
+       "rate": 1.0,
+       "on_pct": 4
+      }
+     ],
+     "nonelective_pct": 0.0
+    },
+    "hsa_employer_annual": null,
+    "pto_days": 15,
+    "pto_unlimited": false,
+    "relocation": null,
+    "equity_value_usd": null,
+    "start_date": "2026-06-29",
+    "work_arrangement": "hybrid"
+   },
+   "take_home": {
+    "gross": 62000,
+    "pretax_401k": 3720.0,
+    "pretax_health": 1440.0,
+    "federal_taxable": 40740.0,
+    "federal_tax": 4640.8,
+    "social_security": 3754.72,
+    "medicare": 878.12,
+    "state_taxable": 48490.0,
+    "state_tax": 1212.25,
+    "local_tax": 0.0,
+    "total_tax": 10485.89,
+    "take_home_annual": 46354.11,
+    "take_home_monthly": 3862.84
+   }
+  },
+  "s6_B": {
+   "sample_id": "data-3way",
+   "file": "s6_B_allegheny.pdf",
+   "format": "pdf",
+   "fields": {
+    "company": "Allegheny Analytics",
+    "job_title": "Data Analyst I",
+    "office_city": "Pittsburgh",
+    "office_state": "PA",
+    "base_salary": 68000,
+    "signing_bonus": 4000,
+    "bonus_target_pct": 5,
+    "match_401k": {
+     "tiers": [
+      {
+       "rate": 0.5,
+       "on_pct": 6
+      }
+     ],
+     "nonelective_pct": 0.0
+    },
+    "hsa_employer_annual": null,
+    "pto_days": 20,
+    "pto_unlimited": false,
+    "relocation": null,
+    "equity_value_usd": null,
+    "start_date": "2026-07-06",
+    "work_arrangement": "onsite"
+   },
+   "take_home": {
+    "gross": 68000,
+    "pretax_401k": 4080.0,
+    "pretax_health": 1440.0,
+    "federal_taxable": 46380.0,
+    "federal_tax": 5317.6,
+    "social_security": 4126.72,
+    "medicare": 965.12,
+    "state_taxable": 66560.0,
+    "state_tax": 2043.39,
+    "local_tax": 2048.8,
+    "total_tax": 14501.63,
+    "take_home_annual": 47978.37,
+    "take_home_monthly": 3998.2
+   }
+  },
+  "s6_C": {
+   "sample_id": "data-3way",
+   "file": "s6_C_oak-city.txt",
+   "format": "txt",
+   "fields": {
+    "company": "Oak City Insights",
+    "job_title": "Analytics Associate",
+    "office_city": "Raleigh",
+    "office_state": "NC",
+    "base_salary": 70000,
+    "signing_bonus": 3000,
+    "bonus_target_pct": 7.5,
+    "match_401k": {
+     "tiers": [
+      {
+       "rate": 1.0,
+       "on_pct": 4
+      }
+     ],
+     "nonelective_pct": 0.0
+    },
+    "hsa_employer_annual": 750,
+    "pto_days": 18,
+    "pto_unlimited": false,
+    "relocation": null,
+    "equity_value_usd": null,
+    "start_date": "2026-07-13",
+    "work_arrangement": "hybrid"
+   },
+   "take_home": {
+    "gross": 70000,
+    "pretax_401k": 4200.0,
+    "pretax_health": 1440.0,
+    "federal_taxable": 48260.0,
+    "federal_tax": 5543.2,
+    "social_security": 4250.72,
+    "medicare": 994.12,
+    "state_taxable": 51610.0,
+    "state_tax": 2059.24,
+    "local_tax": 0.0,
+    "total_tax": 12847.28,
+    "take_home_annual": 51512.72,
+    "take_home_monthly": 4292.73
+   }
+  }
+ }
+}
