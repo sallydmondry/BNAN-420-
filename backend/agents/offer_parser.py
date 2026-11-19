@@ -68,6 +68,20 @@ def fields_from_form(form) -> OfferFields:
     return f
 
 
+def apply_corrections(fields: OfferFields, form) -> list[str]:
+    """Fill or override extracted fields with anything the user typed in 'Add or correct details'."""
+    typed = fields_from_form(form)
+    changed = []
+    for name in OfferFields.model_fields:
+        v = getattr(typed, name)
+        if isinstance(v, Extracted) and v.value is not None:
+            setattr(fields, name, v)
+            changed.append(name)
+    if typed.pay_basis != "unknown" and "base_salary" in changed:
+        fields.pay_basis = typed.pay_basis
+    return changed
+
+
 def _count_found(f: OfferFields) -> int:
     return sum(1 for k in KEY_FIELDS if getattr(f, k).known or (k == "pto_days" and f.pto_unlimited))
 
@@ -141,7 +155,8 @@ def resolve_location(fields: OfferFields, remote_hint: Optional[str]) -> tuple[R
     state = fields.office_state.value if fields.office_state.known else None
     loc = L.resolve_city(city, state, basis="office")
     if not city:
-        warnings.append("Office city not stated in offer, so city costs and lifestyle can't be computed. Add it manually.")
+        warnings.append("Office city not found in the letter, so city costs and lifestyle can't be computed. Type it under "
+                        "'Add or correct details' and compare again.")
     elif not loc.matched:
         warnings.append(f"'{city}' isn't in TrueOffer's 52-metro dataset, so city costs can't be estimated.")
     elif loc.state and not fields.office_state.known:
@@ -191,6 +206,10 @@ async def run(inp: OfferParserInput) -> OfferParserOutput:
             warnings.append("This doesn't look like a job offer letter. Check that you uploaded the right file.")
         fields, rlog = await asyncio.to_thread(extract_fields, text)
         log.extend(rlog)
+        if inp.form is not None:
+            changed = apply_corrections(fields, inp.form)
+            if changed:
+                log.append(f"Used {len(changed)} detail(s) you typed in: " + ", ".join(c.replace('_', ' ') for c in changed) + ".")
         if llm.claude_enabled() and _count_found(fields) < len(KEY_FIELDS):
             if await _claude_fill(text, fields, log):
                 engine = "claude"
@@ -200,8 +219,12 @@ async def run(inp: OfferParserInput) -> OfferParserOutput:
     warnings.extend(lw)
     if loc.matched:
         log.append(f"Matched the office to the {loc.metro_name} metro ({loc.method.replace('_', ' ')}).")
+    if not fields.job_title.known:
+        warnings.append("Job title not found in the letter, so the pay benchmark is skipped. Type it under "
+                        "'Add or correct details' and compare again.")
     if not fields.base_salary.known:
-        warnings.append("Base salary not stated in offer, so pay-based numbers are missing. Add it manually.")
+        warnings.append("Base salary not found in the letter, so pay-based numbers are missing. Type it under "
+                        "'Add or correct details' and compare again.")
 
     found = _count_found(fields)
     confidence = round(min(1.0, 0.75 * found / len(KEY_FIELDS) + (0.25 if loc.matched else 0.0)) * (1.0 if is_offer else 0.5), 2)

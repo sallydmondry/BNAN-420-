@@ -345,59 +345,132 @@ def parse_company(text: str) -> Optional[tuple[str, str]]:
     return None
 
 
-def _tidy_title(t: str) -> str:
-    t = re.sub(r"\s+", " ", t).strip(" ,.-:")
-    t = re.split(r",\s+(?=[A-Z])|\s+\(|\s+reporting\b", t)[0]
-    t = re.sub(r"^(?:an?|the)\s+", "", t, flags=re.I)
-    return t.strip()
+ROLE_NOUNS = (r"analyst|associate|engineer|developer|consultant|accountant|auditor|specialist|manager|coordinator|"
+              r"representative|assistant|scientist|designer|administrator|officer|advisor|adviser|planner|technician|"
+              r"intern|trainee|executive|strategist|architect|programmer|nurse|teacher|paralegal|attorney|lawyer|"
+              r"recruiter|generalist|buyer|underwriter|actuary|economist|statistician|researcher|director|lead|"
+              r"supervisor|agent|clerk|controller|editor|writer|producer|marketer|operator|technologist|therapist|"
+              r"pharmacist|chemist|biologist|fellow|apprentice|banker|trader|partner|copywriter|bookkeeper|examiner|"
+              r"investigator|counselor|educator|instructor|tutor|liaison|ambassador|owner|head")
+_ROLE_END = re.compile(rf"^(.*\b(?:{ROLE_NOUNS})s?\b(?:\s+(?:I{{1,3}}|IV|V|[1-5]))?(?:\s+-\s+[A-Za-z&]+(?:\s[A-Za-z&]+)?)?)",
+                       re.I)
+_TITLE_STOP = re.compile(r"\s+(?:in|at|with|on|for|reporting|based|located|to|within|where|starting|beginning|effective|"
+                         r"who|which|that|from|under|and\s+(?:you|will|report|your)|you|your|position|role|job|opening)\b"
+                         r"|[.;:(!?@]|,", re.I)
+_TITLE_LEAD = re.compile(r"^(?:(?:an?|the|our|full[- ]time|part[- ]time|new|permanent|exempt|salaried|regular)\s+)+", re.I)
+_X = r"([A-Za-z][A-Za-z&/'\-]*(?:\s+[A-Za-z0-9&/'\-]+){0,8})"
+
+
+def _clean_title(raw: str) -> Optional[str]:
+    """Trim a candidate to a plausible job title; None unless it ends in a real job word (Analyst, Engineer…)."""
+    t = re.sub(r"\s+", " ", raw).strip(" ,.:;-")
+    t = _TITLE_STOP.split(t)[0].strip(" -")
+    t = _TITLE_LEAD.sub("", t)
+    m = _ROLE_END.match(t)
+    if not m:
+        return None
+    t = m.group(1).strip()
+    if not 1 <= len(t.split()) <= 8 or MONEY_RE.search(t):
+        return None
+    keep = {"I", "II", "III", "IV", "V", "IT", "HR", "QA", "UX", "UI", "CPA", "FP&A", "AI", "ML", "SQL", "VP"}
+    all_caps = t.isupper()
+    t = " ".join(w if w in keep else (w.capitalize() if all_caps or w.islower() else w) for w in t.split())
+    t = re.sub(r"\b(Of|And|For|The)\b", lambda m: m.group(1).lower(), t)
+    return t
 
 
 def parse_title(text: str) -> Optional[tuple[str, str]]:
+    """Job title from labeled lines first, then common offer-letter sentences, then a guarded fallback."""
+    lines = [ln.strip() for ln in _clean(text).split("\n") if ln.strip()]
+    label = re.compile(r"^(?:[-*>]\s*)?(?:job\s+title|position\s+title|official\s+title|business\s+title|title|role|"
+                       r"position|job)\b\s*(?::|\.{2,}|-|\|)?\s*(.{3,90})$", re.I)
+    for ln in lines:
+        m = label.match(ln)
+        if m and (t := _clean_title(m.group(1))):
+            return t, _evidence(ln, 0, len(ln), 90)
     f = flat(text)
-    words = rf"{TITLE_WORDS}(?:\s+(?:{TITLE_WORDS}|of|and|&|-|I{{1,3}}))*?"
     pats = [
-        r"(?:^|\n)\s*(?:[-*]\s*)?(?:title|role|position)\s*(?::|\.{3,})\s*([^\n]{3,70})",
-        rf"position of (?:an?\s+)?({words})(?=\s+(?:in|with|on|at|for|reporting|based)\b)",
-        rf"position as (?:an?\s+)?({words})(?=\s+(?:in|with|on|at|for|based)\b)",
-        rf"employment as (?:an?\s+)?({words})(?=\s+(?:in|with|on|at|for)\b)",
-        rf"offer you the (?:role of\s+)?({words})\s+(?:role|position)\b",
-        rf"role of (?:an?\s+)?({words})(?=\s+(?:on|in|with|at|for)\b)",
-        rf"join [A-Z][\w&.' -]+? as (?:an?\s+)?({words})(?=\s+(?:in|on|with|at|for)\b)",
-        rf"\bas (?:an?\s+)({words})(?=\s+in our\b)",
+        rf"(?i:title|position)\s+(?i:will\s+be|is)\s+(?i:that\s+of\s+)?(?:(?i:an?|the)\s+)?{_X}",
+        rf"(?i:position|role|job|title)\s+(?i:of|as)\s+(?:(?i:an?|the)\s+)?{_X}",
+        rf"(?i:offer|extend|hire|hiring)[^.]{{0,50}}?\b(?i:the|a|an|our)\s+{_X}\s+(?i:position|role|job|opening)\b",
+        rf"\b(?i:as|be)\s+(?i:an?|our|the)\s+(?:(?i:new|full-time|part-time)\s+)?{_X}",
+        rf"\b(?i:role|position|title)\s*:\s*{_X}",
+        rf"(?i:offer)\s*[:\-]\s*{_X}",
+        rf"(?i:for|into|fill)\s+(?i:the)\s+{_X}\s+(?i:position|role)\b",
     ]
-    for i, p in enumerate(pats):
-        src = _clean(text) if i == 0 else f
-        m = re.search(p, src, re.I if i == 0 else 0)
-        if m:
-            t = _tidy_title(m.group(1))
-            if 2 <= len(t) <= 70 and not MONEY_RE.search(t):
-                return t, _evidence(src, m.start(), m.end(), 90)
+    for p in pats:
+        for m in re.finditer(p, f):
+            if t := _clean_title(m.group(1)):
+                return t, _evidence(f, m.start(), m.end(), 90)
+    # Fallback: a capitalized phrase ending in a job word, inside a sentence about the offer (not a signature line).
+    body = re.split(r"\n\s*(?:best|sincerely|regards|warm regards|kind regards|cheers|thanks|thank you|respectfully)\b[^\n]{0,20}\n",
+                    _clean(text), maxsplit=1, flags=re.I)[0]
+    for seg in segments(body):
+        if re.search(r"\b(?:offer|position|role|join|hire|title)\b", seg, re.I):
+            m = re.search(rf"\b((?:[A-Z][A-Za-z&/-]*\s+){{0,5}}(?i:{ROLE_NOUNS})s?)\b", seg)
+            if m and (t := _clean_title(m.group(1))):
+                return t, _evidence(seg, m.start(), m.end(), 90)
     return None
 
 
-_STATE_NAME = r"(?:[A-Z]{2}\b|" + "|".join(sorted((n.title() for n in L.US_STATES), key=len, reverse=True)) + r")"
-_CITY = r"[A-Z][a-zA-Z.'-]+(?:\s[A-Z][a-zA-Z.'-]+){0,2}"
+_STATE_NAME = r"(?:[A-Z]{2}\b|" + "|".join(sorted((n.title() for n in L.US_STATES), key=len, reverse=True)) + \
+    "|" + "|".join(sorted((n.upper() for n in L.US_STATES), key=len, reverse=True)) + r")"
+_CITY = r"([A-Z][A-Za-z.'-]+(?:\s[A-Z][A-Za-z.'-]+){0,3})"
+_NOT_CITY = {"the", "our", "this", "your", "suite", "hybrid", "remote", "office", "main", "corporate", "downtown",
+             "headquarters", "street", "st", "ave", "avenue", "road", "blvd", "floor", "building", "dear", "you", "we"}
+
+
+def _city_ok(city: str, st: Optional[str]) -> Optional[tuple[str, Optional[str]]]:
+    """Accept a candidate city only if it is a real place (with a state) or a supported metro (without one).
+
+    Leading words are dropped one at a time so "Northbeam Minneapolis" still finds Minneapolis.
+    """
+    words = city.split()
+    for i in range(len(words)):
+        c = " ".join(words[i:])
+        c = c.title() if c.isupper() else c
+        if c.lower() in _NOT_CITY or len(c) < 3:
+            continue
+        alias = L.CITY_ALIASES.get(c.lower())
+        if alias:
+            return alias[0], st or alias[1]
+        if not st and len(c.split()) > 1:
+            c2, st2 = L.split_city_state(c)
+            if st2 and c2 and L.geocode(f"{c2}, {st2}"):
+                return c2, st2
+        if st:
+            if L.geocode(f"{c}, {st}"):
+                return c, st
+        else:
+            r = L.resolve_city(c, None)
+            if r.matched and r.method == "principal_city":
+                return c, r.state
+    return None
 
 
 def parse_location(text: str) -> Optional[tuple[str, Optional[str], str]]:
-    """(city, state or None, evidence). Explicit office phrases win over letterhead addresses."""
+    """(city, state, evidence). Labeled locations and office phrases win over letterhead addresses."""
     f = flat(text)
+    lines = [ln.strip() for ln in _clean(text).split("\n") if ln.strip()]
+    lab_kw = (r"(?i:primary\s+work\s+location|work\s*location|job\s+location|office\s+location|work\s*site|worksite|"
+              r"duty\s+station|location|where|office|based\s+in|based\s+out\s+of)")
+    label = rf"{lab_kw}\s*(?i:will\s+be|is)?\s*(?i:in|at)?\s*[:.\-|]*\s*(?i:our\s+)?(?:[^,\n]{{0,40}}\d[^,\n]{{0,40}},\s*)?{_CITY}(?:,\s*({_STATE_NAME}))?"
     pats = [
-        (rf"(?:Location|Where|Office|Based in|Work location)\s*[:.]*\s*(?:\d+[^,]*,\s*)?({_CITY}),\s*({_STATE_NAME})", True),
-        (rf"\bin our ({_CITY})(?:,\s*({_STATE_NAME}))?\s+(?:office|headquarters|HQ|studio|location|campus)", True),
-        (rf"\b({_CITY})(?:,\s*({_STATE_NAME}))?\s+office\b", True),
-        (rf"(?:based in|located in|role in|position in|team in|in)\s+({_CITY}),\s*({_STATE_NAME})", True),
-        (rf",\s*({_CITY}),\s*([A-Z]{{2}})\s+\d{{5}}", False),
+        (label, lines),
+        (label, [f]),
+        (rf"(?i:our\s+)?{_CITY}(?:,\s*({_STATE_NAME}))?\s+(?i:office|headquarters|hq|studio|location|campus|branch|site|hub)\b", [f]),
+        (rf"(?i:located|based|work|working|position|role|job|team|relocate|relocating|move|moving)\s+(?i:is\s+|will\s+be\s+)?"
+         rf"(?i:located\s+|based\s+)?(?i:in|to|out\s+of|at)\s+(?i:our\s+)?(?i:the\s+)?{_CITY}(?:,\s*({_STATE_NAME}))?", [f]),
+        (rf"\b(?i:in|at|of)\s+(?i:our\s+)?{_CITY},\s*({_STATE_NAME})\b", [f]),
+        (rf",\s*{_CITY},\s*([A-Z]{{2}})\s+\d{{5}}", [f]),
     ]
-    for p, _explicit in pats:
-        for m in re.finditer(p, f):
-            city = m.group(1).strip()
-            city = re.sub(r"^(?:Downtown|The|Our)\s+", "", city)
-            st = L.normalize_state(m.group(2)) if m.lastindex and m.lastindex >= 2 and m.group(2) else None
-            if city.lower() in {"the", "our", "this", "your", "suite"}:
-                continue
-            if L.geocode(f"{city}, {st}" if st else city) or L.CITY_ALIASES.get(city.lower()):
-                return city, st, _evidence(f, m.start(), m.end(), 90)
+    for p, sources in pats:
+        for src in sources:
+            for m in re.finditer(p, src):
+                st = L.normalize_state(m.group(2)) if m.lastindex and m.lastindex >= 2 and m.group(2) else None
+                ok = _city_ok(m.group(1).strip(), st)
+                if ok:
+                    return ok[0], ok[1], _evidence(src, m.start(), m.end(), 90)
     return None
 
 

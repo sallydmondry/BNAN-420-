@@ -58,6 +58,26 @@ def _ocr_image(img) -> str:
     return "\n".join(t for t in txts if t and t.strip())
 
 
+def _poorly_spaced(text: str) -> bool:
+    """True when words were glued together during extraction (e.g. 'Wearepleasedtooffer')."""
+    tokens = text.split()
+    if not tokens:
+        return False
+    long_tokens = sum(1 for t in tokens if len(t) > 18 and not t.startswith(("http", "www")))
+    return long_tokens / len(tokens) > 0.08 or sum(len(t) for t in tokens) / len(tokens) > 11
+
+
+def _pdfium_text(content: bytes, max_pages: int) -> str:
+    """Second text engine (PDFium), which keeps word spacing on some PDFs where pdfplumber loses it."""
+    import pypdfium2 as pdfium
+
+    doc = pdfium.PdfDocument(content)
+    try:
+        return "\n".join(doc[i].get_textpage().get_text_range() for i in range(min(len(doc), max_pages)))
+    finally:
+        doc.close()
+
+
 def sniff(content: bytes, file_name: Optional[str], media_type: Optional[str]) -> str:
     """Identify the file kind from magic bytes first, then extension/media type."""
     head = content[:8]
@@ -108,6 +128,10 @@ def extract_text(content: bytes, file_name: Optional[str] = None, media_type: Op
             warnings.append(f"Only the first {max_pages} of {n} pages were read.")
         pages = pdf.pages[:max_pages]
         text = "\n".join((p.extract_text() or "") for p in pages)
+    if len(text.strip()) >= 80 and _poorly_spaced(text):
+        alt = _pdfium_text(content, max_pages)
+        if len(alt.strip()) >= 80 and not _poorly_spaced(alt):
+            text = alt
     if len(text.strip()) >= 80:
         return Extraction(text=text, source="pdf_text", pages=min(n, max_pages), warnings=warnings)
     # Scanned PDF: render pages and OCR them.
