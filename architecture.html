@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrueOffer Architecture</title>
+<style>
+  :root {
+    --navy: #0C234B; --red: #AB0520; --arroyo: #106AB1; --azurite: #1E5288; --oasis: #378DBD; --sky: #81D3EB;
+    --ink: #111827; --muted: #4B5563; --line: #D1D5DB; --soft: #F3F4F6; --bg: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 11px/1.35 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  .page { max-width: 1100px; margin: 0 auto; padding: 18px 22px; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 3px solid var(--navy); padding-bottom: 8px; }
+  h1 { margin: 0; font-size: 24px; color: var(--navy); letter-spacing: -.3px; }
+  h1 span { color: var(--red); }
+  .tag { color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .meta { text-align: right; color: var(--muted); font-size: 10.5px; }
+  h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--navy); margin: 12px 0 6px; }
+
+  /* Diagram */
+  .flow { display: grid; grid-template-columns: 150px 1fr 160px; gap: 10px; align-items: stretch; margin-top: 10px; }
+  .col { display: flex; flex-direction: column; gap: 6px; justify-content: center; }
+  .box { border: 1.5px solid var(--line); border-radius: 8px; padding: 6px 8px; background: #fff; }
+  .box b { color: var(--navy); }
+  .in { border-color: var(--oasis); }
+  .out { border-color: var(--navy); background: #EEF1F6; }
+  .orch { border: 2px dashed var(--navy); border-radius: 12px; padding: 8px 10px 10px; position: relative; }
+  .orch > .label { position: absolute; top: -9px; left: 12px; background: #fff; padding: 0 6px; font-weight: 700; color: var(--navy); font-size: 11px; }
+  .stage { display: grid; grid-template-columns: 74px 1fr; gap: 8px; align-items: center; }
+  .stage + .handoff + .stage { margin-top: 0; }
+  .stage .s { font-weight: 700; font-size: 10px; color: var(--muted); text-transform: uppercase; line-height: 1.2; }
+  .agents { display: grid; gap: 6px; }
+  .agents.three { grid-template-columns: repeat(3, 1fr); }
+  .agents.four { grid-template-columns: repeat(4, 1fr); }
+  .agent { border-radius: 8px; padding: 6px 8px; color: #fff; }
+  .agent .n { font-size: 9.5px; opacity: .85; font-weight: 700; letter-spacing: .04em; }
+  .agent .t { font-weight: 700; font-size: 11.5px; }
+  .agent .d { font-size: 10px; opacity: .92; margin-top: 2px; }
+  .a1 { background: var(--azurite); } .a2 { background: var(--arroyo); } .a3 { background: var(--oasis); }
+  .a4 { background: var(--azurite); } .a5 { background: var(--arroyo); } .a6 { background: var(--red); }
+  .handoff { margin: 4px 0 4px 82px; font-size: 10px; color: var(--muted); }
+  .handoff::before { content: "▼ "; color: var(--navy); font-size: 10px; }
+  .handoff code { background: var(--soft); border-radius: 4px; padding: 0 4px; color: var(--ink); }
+  .arrow { display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 18px; }
+  .side { display: grid; grid-template-columns: 150px 18px 1fr 18px 160px; }
+  .loop { margin-top: 6px; font-size: 10px; color: var(--muted); border-left: 3px solid var(--sky); padding: 3px 8px; background: #F7FBFE; }
+
+  /* Tables */
+  .grid2 { display: grid; grid-template-columns: 1.55fr 1fr; gap: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 10px; }
+  th { text-align: left; color: var(--muted); font-size: 9.5px; text-transform: uppercase; letter-spacing: .05em; border-bottom: 1.5px solid var(--navy); padding: 3px 4px; }
+  td { border-bottom: 1px solid var(--line); padding: 3px 4px; vertical-align: top; }
+  td:first-child { font-weight: 700; color: var(--navy); white-space: nowrap; }
+  ul { margin: 0; padding-left: 15px; }
+  li { margin: 1.5px 0; }
+  .note { color: var(--muted); font-size: 9.5px; margin-top: 8px; border-top: 1px solid var(--line); padding-top: 5px; }
+  .pill { display: inline-block; border: 1px dashed #9CA3AF; border-radius: 999px; padding: 0 5px; font-size: 9px; color: #374151; background: var(--soft); }
+
+  @media print {
+    @page { size: letter landscape; margin: 0.3in; }
+    .page { padding: 0; max-width: none; }
+    html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+  @media screen and (max-width: 760px) {
+    .side, .grid2 { grid-template-columns: 1fr; }
+    .arrow { transform: rotate(90deg); }
+    .agents.three, .agents.four { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div>
+      <h1>True<span>Offer</span> · System Architecture</h1>
+      <div class="tag">A multi-agent AI product that compares 2–3 job offers by what each is <b>really</b> worth after taxes, rent, cost of living, benefits and lifestyle.</div>
+    </div>
+    <div class="meta">BNAN 420 · Project B: Agentic AI Product<br>6 agents · 3 stages · 1 orchestrator</div>
+  </header>
+
+  <div class="side" style="margin-top:12px">
+    <div class="col">
+      <div class="box in"><b>Offer letters (2–3)</b><br>PDF · phone photo · Word · pasted text · manual form</div>
+      <div class="box in"><b>Student profile</b><br>loans · housing / roommates · 401(k) % · home city · 0–5 lifestyle priorities · scorecard weights</div>
+    </div>
+    <div class="arrow">➜</div>
+
+    <div class="orch">
+      <div class="label">ORCHESTRATOR · services/orchestrator.py · passes a typed PipelineState between stages</div>
+      <div class="stage" style="margin-top:6px">
+        <div class="s">Stage 1<br>parallel,<br>one per offer</div>
+        <div class="agents three">
+          <div class="agent a1"><div class="n">AGENT 1 · OFFER A</div><div class="t">Offer Parser</div><div class="d">PDF text / offline OCR → 20 fields with evidence quotes → metro match</div></div>
+          <div class="agent a1"><div class="n">AGENT 1 · OFFER B</div><div class="t">Offer Parser</div><div class="d">Same job, runs at the same time</div></div>
+          <div class="agent a1"><div class="n">AGENT 1 · OFFER C</div><div class="t">Offer Parser</div><div class="d">Optional third offer</div></div>
+        </div>
+      </div>
+      <div class="handoff">hands off <code>OfferParserOutput</code> per offer: salary, bonus, 401(k) formula, equity, PTO… + city, state, metro (CBSA). Missing fields = "not stated in offer"</div>
+      <div class="stage">
+        <div class="s">Stage 2<br>4 agents in<br>parallel</div>
+        <div class="agents four">
+          <div class="agent a2"><div class="n">AGENT 2 · gets salary, state, city</div><div class="t">Tax &amp; Take-Home</div><div class="d">2026 federal, FICA, state &amp; city tax → monthly take-home</div></div>
+          <div class="agent a3"><div class="n">AGENT 3 · gets metro, housing</div><div class="t">Cost of Living</div><div class="d">Market rent + groceries, transport, utilities, fun → city budget</div></div>
+          <div class="agent a4"><div class="n">AGENT 4 · gets title, salary, company</div><div class="t">Market &amp; Company</div><div class="d">BLS occupation match → pay percentile, leverage, culture</div></div>
+          <div class="agent a5"><div class="n">AGENT 5 · gets metro, priorities</div><div class="t">Lifestyle Fit</div><div class="d">Weather, commute, outdoors, nightlife, family distance → fit score</div></div>
+        </div>
+      </div>
+      <div class="handoff">hands off <code>TaxOutput</code> · <code>CostOfLivingOutput</code> · <code>MarketOutput</code> · <code>LifestyleOutput</code>, each with confidence, log and sources</div>
+      <div class="stage">
+        <div class="s">Stage 3<br>synthesis</div>
+        <div class="agents">
+          <div class="agent a6"><div class="n">AGENT 6 · gets all outputs + profile</div><div class="t">Decision Strategist</div><div class="d">Money left over = take-home − rent − living − loans · weighted 5-part scorecard · tie check · "what would flip the decision" re-runs · negotiation email · recruiter questions</div></div>
+        </div>
+      </div>
+      <div class="loop"><b>Coordination:</b> asyncio.gather runs each stage in parallel · per-agent timeout · if an agent fails the run continues and the report is flagged "partial" · progress events stream live to the browser (Server-Sent Events) · <b>What-if loop:</b> sliders call <code>/api/recalculate</code>, which re-runs Agent 6's scoring with the same code, instantly.</div>
+    </div>
+
+    <div class="arrow">➜</div>
+    <div class="col">
+      <div class="box out"><b>Comparison dashboard</b><br>winner + monthly difference · where each paycheck goes · offer cards · scorecard · what-ifs · details with formula &amp; source for every number · negotiation email</div>
+      <div class="box"><b>Human in the loop</b><br>Student reviews extracted fields &amp; evidence, fills gaps, tests assumptions, and edits and sends the email themselves.</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <h2>Why each agent exists</h2>
+      <table>
+        <tr><th>Agent</th><th>Specialized job</th><th>Data it uses</th></tr>
+        <tr><td>1 Offer Parser</td><td>Letters are messy and inconsistent; one agent turns any format into the same structured fields and never guesses</td><td>pdfplumber, RapidOCR (offline ML), rules engine, Census Gazetteer</td></tr>
+        <tr><td>2 Tax</td><td>Taxes are the biggest hidden difference between cities</td><td>IRS Rev. Proc. 2025-32, IRS Pub 15, Tax Foundation 2026, city tax sources</td></tr>
+        <tr><td>3 Cost of Living</td><td>Rent and prices decide what a salary is worth</td><td>Zillow ZORI, Census ACS 2024, BLS Consumer Expenditure, BEA price parities</td></tr>
+        <tr><td>4 Market</td><td>Is the pay fair locally? That's negotiation leverage</td><td>BLS OEWS May 2025; <span class="pill">SIMULATED</span> reviews</td></tr>
+        <tr><td>5 Lifestyle</td><td>Money isn't everything; it scores what <i>this</i> student cares about</td><td>NOAA normals, Census ACS, BEA, national parks list</td></tr>
+        <tr><td>6 Strategist</td><td>Combines everything into one decision and tests how robust it is</td><td>Outputs of agents 1–5</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2>Design decisions</h2>
+      <ul>
+        <li><b>Independent agents run in parallel:</b> agents 2–5 don't depend on each other, so Stage 2 runs them together.</li>
+        <li><b>Deterministic money math:</b> every dollar comes from code over public data (core/finance.py), never from a language model.</li>
+        <li><b>Evidence over guessing:</b> each field cites its quote; missing items say "not stated in offer."</li>
+        <li><b>Runs with no API key:</b> each agent has a local engine; Claude is optional for language tasks only, and a guard rejects new dollar figures.</li>
+        <li><b>Private:</b> offers are processed in memory, never stored or logged; results expire in 30 minutes.</li>
+        <li><b>Verified:</b> 195/195 sample fields extracted correctly; take-home exact to the cent vs. an independent worksheet; 54 automated tests.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">Stack: FastAPI + pydantic (typed agent contracts in core/models.py) · React + TypeScript + Tailwind · Server-Sent Events · Docker. Built with Claude Code. Estimates for comparison, not financial advice. Sample companies and reviews are SIMULATED.</div>
+</div>
+</body>
+</html>
